@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View} from 'react-native';
 
@@ -8,13 +8,11 @@ import { loginStyles } from '../theme/loginTheme';
 import { useNavigation } from '@react-navigation/native';
 import { WhiteLogo } from '../components/Logo';
 import { RegisterScreen } from './RegisterScreen';
-
-
-
+import { AuthContext } from '../context/AuthContext';
 
 export const LoginScreen = ({ navigation }: any) => {
 
-    // const { signIn, errorMessage, removeError } = useContext( AuthContext );
+    const { signIn, errorMessage, removeError } = useContext( AuthContext );
 
     // const navigation = useNavigation();
 
@@ -23,25 +21,24 @@ export const LoginScreen = ({ navigation }: any) => {
         password: ''
      });
 
-    //  useEffect(() => {
-    //     if(errorMessage.length === 0) return;
+     useEffect(() => {
+        if(errorMessage.length === 0) return;
  
-    //     Alert.alert(
-    //      'Login incorrecto', 
-    //      errorMessage,
-    //      [
-    //          {
-    //              text: 'Ok',
-    //              onPress: removeError
-    //          }
-    //      ] 
-    //      );
-    //   }, [errorMessage]);    
+        Alert.alert(
+         'Login incorrecto', 
+         errorMessage,
+         [
+             {
+                 text: 'Ok',
+                 onPress: removeError
+             }
+         ] 
+         );
+      }, [errorMessage]);    
  
       const onLogin = () => {
-        console.log('logeando');
-        //  Keyboard.dismiss();
-        //  signIn({ correo: email, password });
+         Keyboard.dismiss();
+         signIn({ correo: email, password });
       }
  
 

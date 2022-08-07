@@ -10,7 +10,7 @@ export const loginStyles = StyleSheet.create({
     },
     title: {
         color: 'white',
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 'bold',
         marginTop: 20
     },
@@ -21,7 +21,7 @@ export const loginStyles = StyleSheet.create({
     },
     inputField: {
         color: 'white',
-        fontSize: 20,height: 60
+        fontSize: 18,height: 50
     },
     inputFieldIOS: {
         borderBottomColor: 'white',
@@ -53,7 +53,7 @@ export const loginStyles = StyleSheet.create({
         left: 20,
         borderWidth: 1,
         borderColor: 'white',
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         paddingVertical: 5,
         borderRadius: 100
     }

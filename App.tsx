@@ -2,23 +2,33 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-// import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
-// import { Navigator } from './src/navigators/Navigator';
 import { MyDrawer } from './src/navigators/Drawer';
 import { Text, View } from 'react-native';
+import { AuthProvider } from './src/context/AuthContext';
+import { ProductsProvider } from './src/context/ProductsContext';
 
-export default function App() {
+
+const AppState = ({ children }: any) => {
+  return (
+    <AuthProvider>
+      <ProductsProvider>
+        { children }
+        </ProductsProvider>
+    </AuthProvider>
+  )
+}
+
+const App = () => {
 
   return (
     <NavigationContainer>
+      <AppState>
         <MyDrawer />
         {/* <Navigator /> */}
-    </NavigationContainer>
-    // <View>
-    //   <Text>APPSEMPRO</Text>
-    // </View>
-    
+        </AppState>
+    </NavigationContainer>    
   );
 }
+
+export default App;
 

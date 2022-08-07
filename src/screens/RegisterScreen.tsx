@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import {Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import { WhiteLogo } from '../components/Logo';
+import { AuthContext } from '../context/AuthContext';
 import { useForm } from '../hooks/useForm';
 import { loginStyles } from '../theme/loginTheme';
 
@@ -9,34 +10,35 @@ import { loginStyles } from '../theme/loginTheme';
 
 export const RegisterScreen = ( { navigation }: any) => {
 
-    const {email, password, name, onChange }= useForm({
+    const {email, password, name, nif, onChange }= useForm({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        nif: ''
      });
 
-    // const { signUp, removeError, errorMessage } = useContext( AuthContext);
+    const { signUp, removeError, errorMessage } = useContext( AuthContext);
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     if(errorMessage.length === 0) return;
+        if(errorMessage.length === 0) return;
  
-    //     Alert.alert(
-    //      'Registro incorrecto', 
-    //      errorMessage,
-    //      [
-    //          {
-    //              text: 'Ok',
-    //              onPress: removeError
-    //          }
-    //      ] 
-    //      );
-    //   }, [errorMessage]); 
+        Alert.alert(
+         'Registro incorrecto', 
+         errorMessage,
+         [
+             {
+                 text: 'Ok',
+                 onPress: removeError
+             }
+         ] 
+         );
+      }, [errorMessage]); 
 
      const onRegister = () => {
       console.log('registrando');
-        // Keyboard.dismiss();
-        // signUp({nombre: name, correo: email, password});
+        Keyboard.dismiss();
+        signUp({nombre: name, correo: email, password, nif});
      }
 
     return (
@@ -67,6 +69,26 @@ export const RegisterScreen = ( { navigation }: any) => {
                         
                         onChangeText={ (value) => onChange( value, 'name')}
                         value={ name }
+                        onSubmitEditing={ onRegister }
+
+                        autoCapitalize='none'
+                        autoCorrect={ false }
+                    />
+
+                    <Text style={ loginStyles.label }>NIF/NIE</Text>
+                    <TextInput 
+                        placeholder='Introduce tu NIF/NIE'
+                        placeholderTextColor='rgba(255,255,255,0.4'
+                        keyboardType='default'
+                        underlineColorAndroid='white'
+                        style={[
+                            loginStyles.inputField,
+                            ( Platform.OS === 'ios') && loginStyles.inputFieldIOS
+                        ]}
+                        selectionColor='white'
+                        
+                        onChangeText={ (value) => onChange( value, 'nif')}
+                        value={ nif }
                         onSubmitEditing={ onRegister }
 
                         autoCapitalize='none'
