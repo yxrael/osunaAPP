@@ -39,6 +39,7 @@ export const RegisterScreen = ( { navigation }: any) => {
       console.log('registrando');
         Keyboard.dismiss();
         signUp({nombre: name, correo: email, password, nif});
+        navigation.navigate('e-ASEMPRO');
      }
 
     return (

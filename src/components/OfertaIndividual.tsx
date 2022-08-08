@@ -1,10 +1,12 @@
 import React from 'react'
-import { Image, View } from 'react-native'
+import { Image, View, Dimensions } from 'react-native'
 
 interface Props {
   sector?: string,
   url: string
 }
+
+const windowWidth = Dimensions.get('window').width;
 
 export const OfertaIndividual = ( { sector, url }: Props ) => {
 
@@ -20,14 +22,16 @@ export const OfertaIndividual = ( { sector, url }: Props ) => {
                 
                 elevation: 9,
                 borderRadius: 15,
-                marginBottom: 20,
-                marginTop: 20
+                marginBottom: 15,
+                marginTop: 15
     }}>
         <Image 
             source={ url }
             style={{ 
-                height: 150,
-                width: 300, 
+                // height: 150,
+                // width: 300, 
+                width: windowWidth * 0.9,
+                height: (windowWidth * 0.9) * 0.45,
                 borderRadius: 15,
             }}
         />

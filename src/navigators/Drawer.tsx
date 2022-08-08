@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { Ajustes } from '../screens/Ajustes';
@@ -8,13 +8,17 @@ import { Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LoginScreen } from '../screens/LoginScreen';
 import { RegisterScreen } from '../screens/RegisterScreen';
+import { MiCuenta } from '../screens/MiCuenta';
+import { AuthContext } from '../context/AuthContext';
 
 const Drawer = createDrawerNavigator();
 
 export const MyDrawer = () => {
 
     // const { width } = useWindowDimensions();
-    
+    const { status } = useContext( AuthContext );
+
+    // if ( status === 'not-authenticated' ) return  <LoginScreen />
 
   return (
     <Drawer.Navigator
@@ -29,6 +33,7 @@ export const MyDrawer = () => {
       <Drawer.Screen name="Ajustes" component={Ajustes} />
       <Drawer.Screen name="LoginScreen" component={LoginScreen} />
       <Drawer.Screen name="RegisterScreen" component={RegisterScreen} />
+      <Drawer.Screen name="MiCuenta" component={MiCuenta} />
 
     </Drawer.Navigator>
   );
@@ -37,6 +42,9 @@ export const MyDrawer = () => {
 const MenuInterno = (  ) => {
 
     const navigation = useNavigation();
+    const { status } = useContext( AuthContext );
+
+    console.log( status );
 
     return (
 
@@ -55,7 +63,11 @@ const MenuInterno = (  ) => {
 
                 <TouchableOpacity 
                     style={{ flexDirection: 'row'}}
-                    onPress={ () => navigation.navigate('LoginScreen')}     
+                    onPress={ () => 
+                        ( status === 'authenticated')
+                        ? navigation.navigate('MiCuenta')
+                        : navigation.navigate('LoginScreen')
+                    }     
                 >
                     <Ionicons 
                         name='person-outline'

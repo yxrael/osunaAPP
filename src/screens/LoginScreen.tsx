@@ -39,6 +39,7 @@ export const LoginScreen = ({ navigation }: any) => {
       const onLogin = () => {
          Keyboard.dismiss();
          signIn({ correo: email, password });
+         navigation.navigate('e-ASEMPRO')
       }
  
 

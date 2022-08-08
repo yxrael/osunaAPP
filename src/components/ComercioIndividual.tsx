@@ -1,11 +1,13 @@
-import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 
 interface Props {
     comercio: string,
     direccion: string,
     categoria: string
 }
+
+const windowWidth = Dimensions.get('window').width;
 
 export const ComercioIndividual = ( { comercio , direccion, categoria }: Props) => {
 
@@ -34,9 +36,10 @@ const styles = StyleSheet.create({
     contenedor: {
         backgroundColor: '#b1d8f0',
         borderRadius: 15,
-        marginBottom: 20,
-        width: 300,
-        height: 120,
+        marginBottom: 10,
+        // width: 300,
+        width: windowWidth * 0.9,
+        height: (windowWidth * 0.9) * 0.35,
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
