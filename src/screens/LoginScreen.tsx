@@ -5,7 +5,7 @@ import { Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, Touch
 import { useForm } from '../hooks/useForm';
 import { Background } from '../components/fondo';
 import { loginStyles } from '../theme/loginTheme';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import { WhiteLogo } from '../components/Logo';
 import { RegisterScreen } from './RegisterScreen';
 import { AuthContext } from '../context/AuthContext';
