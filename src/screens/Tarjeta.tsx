@@ -9,10 +9,7 @@ const windowWidth = Dimensions.get('window').width;
 
 export const Tarjeta = () => {
 
-  const { user } = useContext( AuthContext )
-  const uriLogo = ''
-
-  
+  const { user } = useContext( AuthContext );  
 
   return (
     <View style={{

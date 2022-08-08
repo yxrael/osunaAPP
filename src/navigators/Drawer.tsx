@@ -44,8 +44,6 @@ const MenuInterno = (  ) => {
     const navigation = useNavigation();
     const { status } = useContext( AuthContext );
 
-    console.log( status );
-
     return (
 
         <DrawerContentScrollView>

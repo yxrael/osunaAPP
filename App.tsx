@@ -5,15 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MyDrawer } from './src/navigators/Drawer';
 import { Text, View } from 'react-native';
 import { AuthContext, AuthProvider } from './src/context/AuthContext';
-import { ProductsProvider } from './src/context/ProductsContext';
+import { NegociosProvider } from './src/context/NegociosContext';
 
 
 const AppState = ({ children }: any) => {
   return (
     <AuthProvider>
-      <ProductsProvider>
+      <NegociosProvider>
         { children }
-        </ProductsProvider>
+        </NegociosProvider>
     </AuthProvider>
   )
 }

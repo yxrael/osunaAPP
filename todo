@@ -6,3 +6,7 @@ si no hay ofertas, mostrar imagen de ejemplo
 PANTALLA REGISTRO
 explicar la necesidad de dni, y que la vericidad condiciona la aplicación de las ofertas
 escanear dni (y explicar motivo)
+
+
+cambiar las interfaces de OFERTAS y NEGOCIOS con los nuevos campos
+adaptar los context y sus exportaciones a los nuevos datos
