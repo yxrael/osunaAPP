@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Dimensions, View} from 'react-native';
-
+//
 const windowWidth = Dimensions.get('window').width;
 
 export const MapaScreen = () => {
