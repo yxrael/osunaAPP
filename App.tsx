@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { MyDrawer } from './src/navigators/Drawer';
-import { Text, View } from 'react-native';
 import { AuthContext, AuthProvider } from './src/context/AuthContext';
 import { NegociosProvider } from './src/context/NegociosContext';
 

@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { ComercioIndividual } from '../components/ComercioIndividual';
 import { listaComercios } from '../data/listaComercios';
+import { NegociosContext } from '../context/NegociosContext';
+
+import LinearGradient from 'react-native-linear-gradient';
 
 export const Comercios = () => {
+
+  const { negocios } = useContext( NegociosContext );
+  console.log( negocios );
+
   return (
+    <LinearGradient colors={['#e4f0f2', '#62a9e3', '#3695e3']} style={{ flex: 1}}>
+
     <View style={{
       ...stylesInicio.container, 
-      flex: 1,
+      // flex: 1,
       // alignContent: 'center',
       justifyContent: 'center',
       alignItems: 'center'
     
     }}
     >
-        <FlatList 
+        {/* <FlatList 
             data={ listaComercios }
             renderItem={ ({ item }) => ( 
               <ComercioIndividual  
@@ -24,9 +33,21 @@ export const Comercios = () => {
               />)}
             keyExtractor={ item => item.comercio }
             showsVerticalScrollIndicator={ false }
+        /> */}
+        <FlatList 
+            data={ negocios }
+            renderItem={ ({ item }) => ( 
+              <ComercioIndividual  
+                comercio={ item.nombre } 
+                direccion={ item.direccion }
+                categoria={ item.categoria.nombre }
+              />)}
+            keyExtractor={ item => item.nombre }
+            showsVerticalScrollIndicator={ false }
         />
 
     </View>
+    </LinearGradient>
   )
 }
 

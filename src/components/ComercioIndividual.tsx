@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 
+import LinearGradient from 'react-native-linear-gradient';
+
 interface Props {
     comercio: string,
     direccion: string,
@@ -9,11 +11,12 @@ interface Props {
 
 const windowWidth = Dimensions.get('window').width;
 
-export const ComercioIndividual = ( { comercio , direccion, categoria }: Props) => {
+export const ComercioIndividual = ( { comercio , direccion , categoria  }: Props) => {
 
 
   return (
-    <View style={ styles.contenedor }>
+    <LinearGradient colors={['#c0d1eb', '#dde4eb', '#edf1f5']} style={ styles.contenedor }>
+        
 
         {/* <Image 
             source={ require('../../assets/logoasempro.png')}
@@ -27,8 +30,8 @@ export const ComercioIndividual = ( { comercio , direccion, categoria }: Props) 
             <Text style={ styles.categoria }>{ categoria }</Text>
         </View>
         
-
-    </View>
+       
+    </LinearGradient>
   )
 }
 

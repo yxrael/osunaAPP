@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import cafeApi from '../api/cafeApi';
-import { Producto, ProductsResponse } from '../interfaces/appInterfaces';
+import { Producto, NegociosResponse } from '../interfaces/appInterfaces';
 import { ImagePickerResponse, Asset } from 'react-native-image-picker';
 
 type ProductsContextProps = {
@@ -28,7 +28,7 @@ export const ProductsProvider = ({ children }: any ) => {
     
 
     const loadProducts = async() => {
-        const resp = await cafeApi.get<ProductsResponse>('/productos?limite=50');
+        const resp = await cafeApi.get<NegociosResponse>('/productos?limite=50');
         setProducts([...resp.data.productos ]);
     }
 
