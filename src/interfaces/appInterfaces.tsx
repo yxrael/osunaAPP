@@ -102,5 +102,11 @@ export interface UsuarioBasico {
     nombre: string;
 }
 
+export interface OfertasResponse {
+    total:     number;
+    ofertas: Oferta[];
+}
+
+
 
 

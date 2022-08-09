@@ -5,13 +5,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MyDrawer } from './src/navigators/Drawer';
 import { AuthContext, AuthProvider } from './src/context/AuthContext';
 import { NegociosProvider } from './src/context/NegociosContext';
+import { OfertasProvider } from './src/context/OfertasContext';
 
 
 const AppState = ({ children }: any) => {
   return (
     <AuthProvider>
       <NegociosProvider>
-        { children }
+          <OfertasProvider>
+          { children }
+          </OfertasProvider>
         </NegociosProvider>
     </AuthProvider>
   )
@@ -19,7 +22,7 @@ const AppState = ({ children }: any) => {
 
 const App = () => {
 
-  const { status } = useContext( AuthContext );
+  // const { status } = useContext( AuthContext );
 
   return (
     <NavigationContainer>

@@ -22,7 +22,7 @@ export const Comercios = () => {
       alignItems: 'center'
     
     }}
-    >
+    > 
         {/* <FlatList 
             data={ listaComercios }
             renderItem={ ({ item }) => ( 
@@ -39,8 +39,8 @@ export const Comercios = () => {
             renderItem={ ({ item }) => ( 
               <ComercioIndividual  
                 comercio={ item.nombre } 
-                direccion={ item.direccion }
-                categoria={ item.categoria.nombre }
+                direccion={ item.direccion || 'Direccion' }
+                categoria={ item.categoria.nombre || 'Categoría' }
               />)}
             keyExtractor={ item => item.nombre }
             showsVerticalScrollIndicator={ false }

@@ -13,11 +13,9 @@ const windowWidth = Dimensions.get('window').width;
 
 export const ComercioIndividual = ( { comercio , direccion , categoria  }: Props) => {
 
-
   return (
     <LinearGradient colors={['#c0d1eb', '#dde4eb', '#edf1f5']} style={ styles.contenedor }>
         
-
         {/* <Image 
             source={ require('../../assets/logoasempro.png')}
             style={ styles.imagenFondo }
@@ -30,7 +28,6 @@ export const ComercioIndividual = ( { comercio , direccion , categoria  }: Props
             <Text style={ styles.categoria }>{ categoria }</Text>
         </View>
         
-       
     </LinearGradient>
   )
 }
@@ -43,7 +40,7 @@ const styles = StyleSheet.create({
         // width: 300,
         width: windowWidth * 0.9,
         height: (windowWidth * 0.9) * 0.35,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         overflow: 'hidden',
         shadowColor: "#000",
@@ -60,19 +57,26 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
         padding: 2,
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 10
     },
     direccion: {
+        alignSelf: 'flex-end',
         fontSize: 14,
-        fontWeight: '100',
+        fontWeight: '300',
         padding: 2,
-        marginBottom: 4
+        paddingHorizontal: 10,
+        top: 20
     },
     rotuladoCategoria: {
-        backgroundColor: '#1b8bd1',
-        borderRadius: 5,
-        padding: 4,
-        marginBottom: 10
+        alignSelf: 'flex-end',
+        backgroundColor: 'rgba(103, 142, 240,0.8)',
+        // borderBottomLeftRadius: 10,
+        borderTopLeftRadius: 10,
+        padding: 2,
+        paddingHorizontal: 10,
+        marginTop: 15,
+        // marginBottom: 3
     },
     categoria: {
         color: 'white'

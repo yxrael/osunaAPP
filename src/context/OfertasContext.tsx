@@ -1,70 +1,70 @@
 import React, { createContext, useEffect, useState } from 'react';
 import cafeApi from '../api/cafeApi';
-import { Producto, NegociosResponse } from '../interfaces/appInterfaces';
+import { Oferta, OfertasResponse } from '../interfaces/appInterfaces';
 import { ImagePickerResponse, Asset } from 'react-native-image-picker';
 
-type ProductsContextProps = {
-    products: Producto[];
-    loadProducts: () => Promise<void>;
-    addProduct: ( categoryId: string, productName: string ) => Promise<Producto>;
-    updateProduct: ( categoryId: string, productName: string, productId: string ) => Promise<Producto>;
-    deleteProduct: ( id: string ) => Promise<void>;
-    loadProductById: ( id: string ) => Promise<Producto>;
+type OfertasContextProps = {
+    ofertas: Oferta[];
+    loadOfertas: () => Promise<void>;
+    addOferta: ( categoryId: string, productName: string ) => Promise<Oferta>;
+    updateOferta: ( categoryId: string, productName: string, productId: string ) => Promise<Oferta>;
+    deleteOferta: ( id: string ) => Promise<void>;
+    loadOfertaById: ( id: string ) => Promise<Oferta>;
     uploadImage: ( data: Asset, id: string ) => Promise<void>; // TODO: cambiar ANY
     estadoCarga: boolean
 }
 
-export const ProductsContext = createContext({} as ProductsContextProps);
+export const OfertasContext = createContext({} as OfertasContextProps);
 
-export const ProductsProvider = ({ children }: any ) => {
+export const OfertasProvider = ({ children }: any ) => {
 
-    const [products, setProducts] = useState<Producto[]>([]);
+    const [ofertas, setOfertas] = useState<Oferta[]>([]);
 
     const [estadoCarga, setEstadoCarga] = useState(false);
 
     useEffect(() => {
-      loadProducts();
+      loadOfertas();
     }, [])
     
 
-    const loadProducts = async() => {
-        const resp = await cafeApi.get<NegociosResponse>('/productos?limite=50');
-        setProducts([...resp.data.productos ]);
+    const loadOfertas = async() => {
+        const resp = await cafeApi.get<OfertasResponse>('/ofertas?limite=50');
+        setOfertas([...resp.data.ofertas ]);
     }
 
-    const addProduct = async( categoryId: string, productName: string ): Promise<Producto> => {
+    const addOferta = async( categoryId: string, ofertaName: string ): Promise<Oferta> => {
 
     
-            const resp = await cafeApi.post<Producto>('/productos', {
-                nombre: productName,
+            const resp = await cafeApi.post<Oferta>('/ofertas', {
+                nombre: ofertaName,
                 categoria: categoryId
             });
-            setProducts([ ...products, resp.data ]);
+            setOfertas([ ...ofertas, resp.data ]);
 
             return resp.data;
     
         
     }
 
-    const updateProduct = async( categoryId: string, productName: string, productId: string ): Promise<Producto> =>{
+    const updateOferta = async( categoryId: string, ofertaName: string, ofertaId: string ): Promise<Oferta> =>{
 
-            const resp = await cafeApi.put<Producto>(`/productos/${productId}`, {
-                nombre: productName,
+            const resp = await cafeApi.put<Oferta>(`/ofertas/${ofertaId}`, {
+                nombre: ofertaName,
                 categoria: categoryId
             });
-            setProducts( products.map( prod => {
-                return ( prod._id === productId)
+            setOfertas( ofertas.map( ofert => {
+                return ( ofert._id === ofertaId)
                             ? resp.data
-                            : prod
+                            : ofert
             }));
 
             return resp.data;
         
     }
 
-    const deleteProduct = async( id: string ) => {
+    const deleteOferta = async( id: string ) => {
         try {
-            const resp = await cafeApi.delete(`/productos/${ id }`);
+            const resp = await cafeApi.delete(`/ofertas/${ id }`);
             console.log(resp);
             
         } catch (error) {
@@ -72,8 +72,8 @@ export const ProductsProvider = ({ children }: any ) => {
         }
     }
 
-    const loadProductById = async( id: string ) => {
-        const resp = await cafeApi.get<Producto>(`/productos/${ id }`);
+    const loadOfertaById = async( id: string ) => {
+        const resp = await cafeApi.get<Oferta>(`/ofertas/${ id }`);
         return resp.data
     };
 
@@ -92,7 +92,7 @@ export const ProductsProvider = ({ children }: any ) => {
         formData.append('archivo', fileToUpload);
 
         try {
-            const resp = await cafeApi.put(`/uploads/productos/${ id }`, formData, {
+            const resp = await cafeApi.put(`/uploads/ofertas/${ id }`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             console.log(resp);
@@ -105,17 +105,17 @@ export const ProductsProvider = ({ children }: any ) => {
     }
 
     return(
-        <ProductsContext.Provider value={{
-            products,
-            loadProducts,
-            addProduct,
-            updateProduct,
-            deleteProduct,
-            loadProductById,
+        <OfertasContext.Provider value={{
+            ofertas,
+            loadOfertas,
+            addOferta,
+            updateOferta,
+            deleteOferta,
+            loadOfertaById,
             uploadImage,
             estadoCarga
         }}>
             { children }
-        </ProductsContext.Provider>
+        </OfertasContext.Provider>
     )
 }
