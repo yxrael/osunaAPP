@@ -1,15 +1,27 @@
 import React from 'react';
 // import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 export const Ajustes = () => {
   return (
-    <View>
+    <View style={ styles.container }>
         <View>
             
-            <Text>Ajustes</Text>
+            <Text style={ styles.texto }>Ajustes</Text>
         </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    texto: {
+      fontSize: 30,
+      fontWeight: 'bold'
+    }
+});

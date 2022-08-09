@@ -6,6 +6,8 @@ import { MyDrawer } from './src/navigators/Drawer';
 import { AuthContext, AuthProvider } from './src/context/AuthContext';
 import { NegociosProvider } from './src/context/NegociosContext';
 import { OfertasProvider } from './src/context/OfertasContext';
+import { PermissionsProvider } from './src/context/PermissionsContext';
+
 
 
 const AppState = ({ children }: any) => {
@@ -13,7 +15,9 @@ const AppState = ({ children }: any) => {
     <AuthProvider>
       <NegociosProvider>
           <OfertasProvider>
-          { children }
+            <PermissionsProvider>
+              { children }
+          </PermissionsProvider>
           </OfertasProvider>
         </NegociosProvider>
     </AuthProvider>

@@ -9,7 +9,6 @@ import LinearGradient from 'react-native-linear-gradient';
 export const Comercios = () => {
 
   const { negocios } = useContext( NegociosContext );
-  console.log( negocios );
 
   return (
     <LinearGradient colors={['#e4f0f2', '#62a9e3', '#3695e3']} style={{ flex: 1}}>
