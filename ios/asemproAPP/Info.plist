@@ -35,8 +35,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Es necesario conocer tu ubicación para localizar las ofertas</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  	<string>Es necesario conocer tu ubicación para localizar las ofertas</string>	
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Es necesario conocer tu ubicación para localizar las ofertas</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Es necesario acceso a la galeria</string>
 	<key>NSCameraUsageDescription</key>
