@@ -6,7 +6,6 @@ import { Comercios } from '../screens/Comercios';
 import { Inicio } from '../screens/Inicio';
 import { Tarjeta } from '../screens/Tarjeta';
 import { MapaScreen } from '../screens/MapaScreen';
-import { TabBarItem } from 'react-native-tab-view';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -20,7 +19,7 @@ export const Navigator = () => {
             // backgroundColor: 'red'
         }}
         screenOptions={ ( {route} ) => ({
-        tabBarLabelStyle: { fontSize: 12},
+        tabBarLabelStyle: { fontSize: 11},
         // tabBarContentContainerStyle: {
         //     // backgroundColor: 'red'
         // },
@@ -37,6 +36,7 @@ export const Navigator = () => {
             borderColor: 'blue',
             borderWidth: 1 ,        
           },
+        //   tabBarShowLabel: false,
           
         tabBarIcon: ( props ) => {
             let iconName = '';
