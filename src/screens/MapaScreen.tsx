@@ -1,21 +1,20 @@
 import React, { useContext } from 'react';
-import { Image, StyleSheet, Dimensions, View, Button } from 'react-native';
+import { View } from 'react-native';
 import { Mapa } from '../components/Mapa';
 import { PermissionsContext } from '../context/PermissionsContext';
 import { PermisoLocalizacion } from '../components/PermisoLocalizacion';
-//
-const windowWidth = Dimensions.get('window').width;
+import { LoadingScreen } from './LoadingScreen';
 
 export const MapaScreen = () => {
 
-    const { permissions, requestLocationPermission, checkLocationPermission } = useContext( PermissionsContext );
+    const { permissions } = useContext( PermissionsContext );
 
-    console.log( permissions.locationStatus ); 
-
+    if( permissions.locationStatus === 'unavailable' ){
+        return <LoadingScreen />
+    }
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            {/* <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Mapa</Text> */}
 
             {
                 ( permissions.locationStatus === 'granted') 
@@ -23,11 +22,7 @@ export const MapaScreen = () => {
                 : <PermisoLocalizacion />
             }
             
-            
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-
-});
