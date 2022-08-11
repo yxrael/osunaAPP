@@ -4,10 +4,12 @@ import { Mapa } from '../components/Mapa';
 import { PermissionsContext } from '../context/PermissionsContext';
 import { PermisoLocalizacion } from '../components/PermisoLocalizacion';
 import { LoadingScreen } from './LoadingScreen';
+import { NegociosContext } from '../context/NegociosContext';
 
 export const MapaScreen = () => {
 
     const { permissions } = useContext( PermissionsContext );
+    const { negocios } = useContext( NegociosContext );
 
     if( permissions.locationStatus === 'unavailable' ){
         return <LoadingScreen />
@@ -18,7 +20,9 @@ export const MapaScreen = () => {
 
             {
                 ( permissions.locationStatus === 'granted') 
-                ? <Mapa />
+                ? <Mapa 
+                    listado={ negocios }
+                />
                 : <PermisoLocalizacion />
             }
             

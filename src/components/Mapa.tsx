@@ -3,19 +3,21 @@ import { Dimensions, View } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
 import { NegociosContext } from '../context/NegociosContext';
+import { Negocio } from '../interfaces/appInterfaces';
 
 const windowWidth = Dimensions.get('window').width;
 
-export const Mapa = () => {
+export const Mapa = ( listado: Negocio[]) => {
 
-    const { negocios } = useContext( NegociosContext );
-    negocios.map( (item, index) => {
-        console.log( item.nombre);
-        console.log( item.descripcion);
-        console.log( item.longitude);
-        console.log( item.latitude);
-        console.log( index);
-    })
+    // const { negocios } = useContext( NegociosContext );
+
+    // negocios.map( (item, index) => {
+    //     console.log( item.nombre);
+    //     console.log( item.descripcion);
+    //     console.log( item.longitude);
+    //     console.log( item.latitude);
+    //     console.log( index);
+    // })
 
     return (
         <View style={{ flex: 1}}>
@@ -33,7 +35,7 @@ export const Mapa = () => {
             >
                 
                 {
-                    negocios.map( (item, index) => (
+                    listado.map( (item, index) => (
                         <Marker
                             // image={ require('../../assets/custom-marker.png')}
                             key={ index }
