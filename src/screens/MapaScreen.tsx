@@ -11,6 +11,7 @@ export const MapaScreen = () => {
     const { permissions } = useContext( PermissionsContext );
     const { negocios } = useContext( NegociosContext );
 
+
     if( permissions.locationStatus === 'unavailable' ){
         return <LoadingScreen />
     }
@@ -21,7 +22,7 @@ export const MapaScreen = () => {
             {
                 ( permissions.locationStatus === 'granted') 
                 ? <Mapa 
-                    listado={ negocios }
+                    markers={negocios} 
                 />
                 : <PermisoLocalizacion />
             }
