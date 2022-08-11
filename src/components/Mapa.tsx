@@ -32,6 +32,8 @@ export const Mapa = ( listado: Negocio[]) => {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
             }}
+            zoomEnabled={true}
+            zoomTapEnabled={true}
             >
                 
                 {
