@@ -1,5 +1,7 @@
 import React from 'react'
 import { Image, View, Dimensions } from 'react-native'
+import { FadeInImage } from './FadeInImage';
+
 
 interface Props {
   sector?: string,
@@ -25,7 +27,7 @@ export const OfertaIndividual = ( { sector, url }: Props ) => {
                 marginBottom: 15,
                 marginTop: 15
     }}>
-        <Image 
+        {/* <Image 
             source={ url }
             style={{ 
                 // height: 150,
@@ -34,7 +36,19 @@ export const OfertaIndividual = ( { sector, url }: Props ) => {
                 height: (windowWidth * 0.9) * 0.45,
                 borderRadius: 15,
             }}
+        /> */}
+
+        <FadeInImage 
+          uri={'https://nodocios.com.ar/wp-content/uploads/oferta.jpg'}
+          style={{ 
+            width: windowWidth * 0.9,
+            height: (windowWidth * 0.9) * 0.45,
+            borderRadius: 15,
+        }}
+
         />
+
+
     </View>
   )
 }

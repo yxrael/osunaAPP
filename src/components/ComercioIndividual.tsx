@@ -2,16 +2,18 @@ import React from 'react';
 import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
+import { FadeInImage } from './FadeInImage';
 
 interface Props {
     comercio: string,
     direccion: string,
-    categoria: string
+    categoria: string,
+    url?: string
 }
 
 const windowWidth = Dimensions.get('window').width;
 
-export const ComercioIndividual = ( { comercio , direccion , categoria  }: Props) => {
+export const ComercioIndividual = ( { comercio , direccion , categoria, url  }: Props) => {
 
   return (
     <LinearGradient colors={['#c0d1eb', '#dde4eb', '#edf1f5']} style={ styles.contenedor }>
@@ -20,6 +22,24 @@ export const ComercioIndividual = ( { comercio , direccion , categoria  }: Props
             source={ require('../../assets/logoasempro.png')}
             style={ styles.imagenFondo }
         /> */}
+
+        {
+            ( url ) && 
+            <FadeInImage
+                uri={ url }
+                style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: windowWidth * 0.18,
+                height: windowWidth * 0.18,
+                borderTopRightRadius: 10,
+                borderBottomLeftRadius: 7
+                
+                }}
+            />
+        }
+
 
         <Text style={ styles.comercio }>{ comercio }</Text>
         <Text style={ styles.direccion }>{ direccion }</Text>
@@ -54,6 +74,8 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     comercio: {
+        alignSelf: 'flex-start',
+        paddingStart: 10,
         fontSize: 15,
         fontWeight: 'bold',
         padding: 2,

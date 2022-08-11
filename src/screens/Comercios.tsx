@@ -40,6 +40,7 @@ export const Comercios = () => {
                 comercio={ item.nombre } 
                 direccion={ item.direccion || 'Direccion' }
                 categoria={ item.categoria.nombre || 'Categoría' }
+                url={ item.img || ''}
               />)}
             keyExtractor={ item => item.nombre }
             showsVerticalScrollIndicator={ false }
