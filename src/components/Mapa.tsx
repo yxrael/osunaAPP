@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Dimensions, View } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
@@ -7,22 +7,44 @@ import { MapMarkerProps } from 'react-native-maps'
 
 const windowWidth = Dimensions.get('window').width;
 
+const listadoMapas:MapMarkerProps[] = [
+    {
+      coordinate:{
+        latitude: 37.238030385934174,
+        longitude: -5.103299716785019,
+      },
+      title: 'Mapa1',
+      description:'Descripcion de Mapa 1'    
+    },
+    {
+      coordinate:{
+        latitude: 37.24759351514075,
+        longitude: -5.110077494413242,
+      },
+      title: 'Mapa2',
+      description:'Descripcion de Mapa 2'    
+    },
+    {
+      coordinate:{
+        latitude: 37.24190530736906,
+        longitude: -5.10696524192263,
+      },
+      title: 'Mapa3',
+      description:'Descripcion de Mapa 2'    
+    },
+    
+  ]
+
 type Props = {
-    markers: Negocio[]
+    markers: MapMarkerProps[]
 }
 
-export const Mapa = ( {markers}: Props) => {
 
+export const Mapa = ( {markers} : Props) => {
 
-    let listado: MapMarkerProps[] = [];
+  
 
-    markers.map( (item ) => {
-        listado.push({
-            coordinate: { latitude: Number(item.latitude), longitude: Number(item.longitude)},
-            title: item.nombre,
-            description: item.descripcion
-        })
-    })
+console.log(markers);
 
     return (
         <View style={{ flex: 1}}>
@@ -39,13 +61,22 @@ export const Mapa = ( {markers}: Props) => {
                 }}
                 zoomEnabled={true}
                 zoomTapEnabled={true}
+                provider='google'
             >
 
-{
-                listado.map( (item, index ) => (
+            {
+                markers.map( (item: MapMarkerProps, index: any ) => (
                     <Marker
                         key={ index }
-                        coordinate={ item.coordinate }
+                        // coordinate={ item.coordinate }
+                        // coordinate={{
+                        //     latitude: 37.238030385934174,
+                        //     longitude: -5.103299716785019
+                        // }}
+                        coordinate={{
+                            latitude: item.coordinate.latitude,
+                            longitude: item.coordinate.longitude
+                        }}
                         title={ item.title}
                         description={ item.description }
                     />

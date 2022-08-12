@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -6,11 +6,18 @@ import { Comercios } from '../screens/Comercios';
 import { Inicio } from '../screens/Inicio';
 import { Tarjeta } from '../screens/Tarjeta';
 import { MapaScreen } from '../screens/MapaScreen';
+import { NegociosContext } from '../context/NegociosContext';
+
 
 const Tab = createMaterialTopTabNavigator();
 
 export const Navigator = () => {
 
+    const { loadNegocios } = useContext( NegociosContext );
+    useEffect(() => {
+        loadNegocios();
+    }, [])
+    
   return (
 
     <Tab.Navigator

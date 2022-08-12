@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { Ajustes } from '../screens/Ajustes';
-import { Inicio } from '../screens/Inicio';
 import { Navigator } from './Navigator';
-import { Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LoginScreen } from '../screens/LoginScreen';
 import { RegisterScreen } from '../screens/RegisterScreen';
@@ -14,11 +13,6 @@ import { AuthContext } from '../context/AuthContext';
 const Drawer = createDrawerNavigator();
 
 export const MyDrawer = () => {
-
-    // const { width } = useWindowDimensions();
-    const { status } = useContext( AuthContext );
-
-    // if ( status === 'not-authenticated' ) return  <LoginScreen />
 
   return (
     <Drawer.Navigator
