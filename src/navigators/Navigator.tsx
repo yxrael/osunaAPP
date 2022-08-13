@@ -8,7 +8,6 @@ import { Tarjeta } from '../screens/Tarjeta';
 import { MapaScreen } from '../screens/MapaScreen';
 import { NegociosContext } from '../context/NegociosContext';
 
-
 const Tab = createMaterialTopTabNavigator();
 
 export const Navigator = () => {

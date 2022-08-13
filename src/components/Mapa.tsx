@@ -13,24 +13,24 @@ const listadoMapas:MapMarkerProps[] = [
         latitude: 37.238030385934174,
         longitude: -5.103299716785019,
       },
-      title: 'Mapa1',
-      description:'Descripcion de Mapa 1'    
+      title: '3JOLI',
+      description:'Tienda de moda'    
     },
     {
       coordinate:{
         latitude: 37.24759351514075,
         longitude: -5.110077494413242,
       },
-      title: 'Mapa2',
-      description:'Descripcion de Mapa 2'    
+      title: 'ACRISTALAMIENTOS VILLA DUCAL',
+      description:'Cristalería'    
     },
     {
       coordinate:{
         latitude: 37.24190530736906,
         longitude: -5.10696524192263,
       },
-      title: 'Mapa3',
-      description:'Descripcion de Mapa 2'    
+      title: 'AGIL GESTIÓN Y ASESORAMIENTO',
+      description:'Asesoría'    
     },
     
   ]
@@ -40,9 +40,7 @@ type Props = {
 }
 
 
-export const Mapa = ( {markers} : Props) => {
-
-  
+export const Mapa = ( {markers} : Props) => {  
 
 console.log(markers);
 
@@ -65,7 +63,7 @@ console.log(markers);
             >
 
             {
-                markers.map( (item: MapMarkerProps, index: any ) => (
+                listadoMapas.map( (item: MapMarkerProps, index: any ) => (
                     <Marker
                         key={ index }
                         // coordinate={ item.coordinate }

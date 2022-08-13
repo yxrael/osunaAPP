@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import QRCode from 'react-native-qrcode-svg';
 
-import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { styles } from '../theme/styles';
 import { AuthContext } from '../context/AuthContext';
 
 const windowWidth = Dimensions.get('window').width;
 
 export const Tarjeta = () => {
+  
 
   const { user } = useContext( AuthContext );  
 

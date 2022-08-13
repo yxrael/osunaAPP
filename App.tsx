@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { MyDrawer } from './src/navigators/Drawer';
-import { AuthContext, AuthProvider } from './src/context/AuthContext';
-import { NegociosContext, NegociosProvider } from './src/context/NegociosContext';
+import { AuthProvider } from './src/context/AuthContext';
+import { NegociosProvider } from './src/context/NegociosContext';
 import { OfertasProvider } from './src/context/OfertasContext';
 import { PermissionsProvider } from './src/context/PermissionsContext';
 
@@ -26,16 +26,12 @@ const AppState = ({ children }: any) => {
 
 const App = () => {
 
-
-
-  // const { status } = useContext( AuthContext );
-
   return (
     <NavigationContainer>
       <AppState>
         <MyDrawer />
         {/* <Navigator /> */}
-        </AppState>
+      </AppState>
     </NavigationContainer>    
   );
 }

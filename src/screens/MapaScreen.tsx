@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import React, { useContext } from 'react';
+import { View } from 'react-native';
 import { Mapa } from '../components/Mapa';
 import { PermissionsContext } from '../context/PermissionsContext';
 import { PermisoLocalizacion } from '../components/PermisoLocalizacion';
@@ -7,14 +7,12 @@ import { LoadingScreen } from './LoadingScreen';
 import { NegociosContext } from '../context/NegociosContext';
 import { MapMarkerProps } from 'react-native-maps'
 import useEffect from 'react';
-import { AuthContext } from '../context/AuthContext';
 
-export const MapaScreen = () => {
+export const MapaScreen = () => {   
 
     const { permissions } = useContext( PermissionsContext );
     const { negocios} = useContext( NegociosContext );
     
-
     let listado: MapMarkerProps[] = [];
 
     negocios.map( (item ) => {
@@ -28,13 +26,6 @@ export const MapaScreen = () => {
     if( permissions.locationStatus === 'unavailable' ){
         return <LoadingScreen />
     }
-
-    // if( demora ) return <ActivityIndicator />
-
-    // setTimeout(() => {
-    //     setDemora(false)
-    // }, 200);
-    
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
