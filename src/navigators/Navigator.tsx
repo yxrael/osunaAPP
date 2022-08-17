@@ -7,6 +7,7 @@ import { Inicio } from '../screens/Inicio';
 import { Tarjeta } from '../screens/Tarjeta';
 import { MapaScreen } from '../screens/MapaScreen';
 import { NegociosContext } from '../context/NegociosContext';
+import { MyStack } from './StackNavigator';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -81,7 +82,7 @@ export const Navigator = () => {
                 
         />
         <Tab.Screen name="Comercios" component={Comercios} />
-        <Tab.Screen name="Mapa" component={MapaScreen} />
+        <Tab.Screen name="Mapa" component={MyStack} />
         <Tab.Screen name="Tarjeta" component={Tarjeta} />
     </Tab.Navigator>
     

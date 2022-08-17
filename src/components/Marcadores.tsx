@@ -1,33 +1,34 @@
 import React from 'react';
+import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 import { MapMarkerProps } from 'react-native-maps'
 
 interface Marcador{
-    marcador: MapMarkerProps,
-    index: any
+    marcador: MapMarkerProps[],
 }
 
-export const Marcadores = ( {marcador }: Marcador, index: any ) => {
-  return (
-    <>
-    
-    <Marker
-        key={ index }
-        coordinate={{
-            latitude: marcador.coordinate.latitude,
-            longitude: marcador.coordinate.longitude
-        }}
-        title={ marcador.title}
-        description={ marcador.description }
-    />
-    
-    </>
-  )
+export const Marcadores = ( { marcador }: Marcador) => {
+
+    const listaMarcas = marcador.map( (marca, index ) => {
+
+        return (
+            <Marker 
+                key={ index }
+                coordinate={{
+                    latitude: marca.coordinate.latitude,
+                    longitude: marca.coordinate.longitude
+                }}
+                title={ marca.title}
+                description={ marca.description}
+            />
+
+        )
+    })
+
+    return (
+        <View>
+            { listaMarcas }
+        </View>
+    )
 }
-
-
-                    //     // coordinate={{
-                    //     //     latitude: 37.238030385934174,
-                    //     //     longitude: -5.103299716785019
-                    //     // }}

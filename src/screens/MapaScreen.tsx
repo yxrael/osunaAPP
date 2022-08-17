@@ -19,7 +19,8 @@ export const MapaScreen = ( { navigation }: any) => {
             listado.push({
                 coordinate: { latitude: Number(item.latitude), longitude: Number(item.longitude)},
                 title: item.nombre,
-                description: item.descripcion
+                description: item.descripcion,
+                identifier: item._id
             })
         })
 
@@ -30,19 +31,9 @@ export const MapaScreen = ( { navigation }: any) => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 
-          <Button 
-            title='Ir al mapa'
-            onPress={ ()=> navigation.navigate('Mapa', {markers: negocios} )}
+          <Mapa 
+            markers={ listado }
           />
-
-
-            {/* {
-                ( permissions.locationStatus === 'granted' && listado !== []) 
-                ? <Mapa 
-                    markers={listado} 
-                />
-                : <PermisoLocalizacion />
-            } */}
             
         </View>
     );
