@@ -3,7 +3,8 @@ import { Dimensions, View } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
 import { Negocio } from '../interfaces/appInterfaces';
-import { MapMarkerProps } from 'react-native-maps'
+import { MapMarkerProps } from 'react-native-maps';
+import { Marcadores } from './Marcadores';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -63,33 +64,15 @@ console.log(markers);
             >
 
             {
-                listadoMapas.map( (item: MapMarkerProps, index: any ) => (
-                    <Marker
-                        key={ index }
-                        // coordinate={ item.coordinate }
-                        // coordinate={{
-                        //     latitude: 37.238030385934174,
-                        //     longitude: -5.103299716785019
-                        // }}
-                        coordinate={{
-                            latitude: item.coordinate.latitude,
-                            longitude: item.coordinate.longitude
-                        }}
-                        title={ item.title}
-                        description={ item.description }
+                markers.map( (item: MapMarkerProps, index: any ) => (
+
+                    <Marcadores 
+                      marcador={ item }
+                      index = {index}
                     />
+
                 ))
             }
-
-                        {/* <Marker  
-                            coordinate={{
-                                latitude: 37.238030385934174,
-                                longitude: -5.103299716785019
-                            }}
-                            title={ '3Joli'}
-                            description={ 'Tienda de moda'}
-                        /> */}
-                
 
             </ MapView>
         </View>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View } from 'react-native';
+import { Button, View } from 'react-native';
 import { Mapa } from '../components/Mapa';
 import { PermissionsContext } from '../context/PermissionsContext';
 import { PermisoLocalizacion } from '../components/PermisoLocalizacion';
@@ -8,7 +8,7 @@ import { NegociosContext } from '../context/NegociosContext';
 import { MapMarkerProps } from 'react-native-maps'
 import useEffect from 'react';
 
-export const MapaScreen = () => {   
+export const MapaScreen = ( { navigation }: any) => {   
 
     const { permissions } = useContext( PermissionsContext );
     const { negocios} = useContext( NegociosContext );
@@ -30,13 +30,19 @@ export const MapaScreen = () => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 
-            {
+          <Button 
+            title='Ir al mapa'
+            onPress={ ()=> navigation.navigate('Mapa', {markers: negocios} )}
+          />
+
+
+            {/* {
                 ( permissions.locationStatus === 'granted' && listado !== []) 
                 ? <Mapa 
                     markers={listado} 
                 />
                 : <PermisoLocalizacion />
-            }
+            } */}
             
         </View>
     );
