@@ -1,54 +1,67 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
+import { Negocio } from '../interfaces/appInterfaces';
 import { FadeInImage } from './FadeInImage';
 
 interface Props {
-    comercio: string,
+    nombre: string,
     direccion: string,
     categoria: string,
+    id: string
     url?: string
 }
 
 const windowWidth = Dimensions.get('window').width;
 
-export const ComercioIndividual = ( { comercio , direccion , categoria, url  }: Props) => {
+export const ComercioIndividual = ( { nombre , direccion , categoria, url, id  }: Props) => {
+
+    console.log( nombre )
+
+
+    const muestraComercio = () => {
+        console.log('Muestra comercio');
+    }
 
   return (
-    <LinearGradient colors={['#c0d1eb', '#dde4eb', '#edf1f5']} style={ styles.contenedor }>
-        
-        {/* <Image 
-            source={ require('../../assets/logoasempro.png')}
-            style={ styles.imagenFondo }
-        /> */}
 
-        {
-            ( url ) && 
-            <FadeInImage
-                uri={ url }
-                style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                width: windowWidth * 0.18,
-                height: windowWidth * 0.18,
-                borderTopRightRadius: 10,
-                borderBottomLeftRadius: 7
-                
-                }}
+    <TouchableOpacity
+        activeOpacity={ 0.8 }
+        onPress={ muestraComercio }
+    >
+        <LinearGradient colors={['#c0d1eb', '#dde4eb', '#edf1f5']} style={ styles.contenedor }>
+            
+            <Image 
+                source={ require('../../assets/logoasempro.png')}
+                style={ styles.imagenFondo }
             />
-        }
 
+            {
+                ( url ) && 
+                <FadeInImage
+                    uri={ url }
+                    style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: windowWidth * 0.18,
+                    height: windowWidth * 0.18,
+                    borderTopRightRadius: 10,
+                    borderBottomLeftRadius: 7
+                    }}
+                />
+            }
 
-        <Text style={ styles.comercio }>{ comercio }</Text>
-        <Text style={ styles.direccion }>{ direccion }</Text>
+            <Text style={ styles.comercio }>{ nombre }</Text>
+            <Text style={ styles.direccion }>{ direccion }</Text>
 
-        <View style={ styles.rotuladoCategoria }>
-            <Text style={ styles.categoria }>{ categoria }</Text>
-        </View>
-        
-    </LinearGradient>
+            <View style={ styles.rotuladoCategoria }>
+                <Text style={ styles.categoria }>{ categoria }</Text>
+            </View>
+            
+        </LinearGradient>
+    </TouchableOpacity>
   )
 }
 

@@ -15,32 +15,22 @@ export const Comercios = () => {
 
     <View style={{
       ...stylesInicio.container, 
-      // flex: 1,
-      // alignContent: 'center',
       justifyContent: 'center',
       alignItems: 'center'
     
     }}
     > 
-        {/* <FlatList 
-            data={ listaComercios }
-            renderItem={ ({ item }) => ( 
-              <ComercioIndividual  
-                comercio={ item.comercio } 
-                direccion={ item.direccion }
-                categoria={ item.categoria }
-              />)}
-            keyExtractor={ item => item.comercio }
-            showsVerticalScrollIndicator={ false }
-        /> */}
+
         <FlatList 
             data={ negocios }
             renderItem={ ({ item }) => ( 
               <ComercioIndividual  
-                comercio={ item.nombre } 
+                nombre={ item.nombre } 
                 direccion={ item.direccion || 'Direccion' }
                 categoria={ item.categoria.nombre || 'Categoría' }
+                id={ item._id }
                 url={ item.img || ''}
+                // comercio={ item }
               />)}
             keyExtractor={ item => item.nombre }
             showsVerticalScrollIndicator={ false }
@@ -54,6 +44,5 @@ export const Comercios = () => {
 const stylesInicio = StyleSheet.create({
   container: {
     marginHorizontal: 20,
-    // marginVertical: 20,
 }
 })

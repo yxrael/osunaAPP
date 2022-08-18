@@ -5,9 +5,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Comercios } from '../screens/Comercios';
 import { Inicio } from '../screens/Inicio';
 import { Tarjeta } from '../screens/Tarjeta';
-import { MapaScreen } from '../screens/MapaScreen';
 import { NegociosContext } from '../context/NegociosContext';
-import { MyStack } from './StackNavigator';
+import { MapaScreen } from '../screens/MapaScreen';
+import { ComercioStack } from './ComercioStack';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -23,13 +23,9 @@ export const Navigator = () => {
     <Tab.Navigator
         style={{}}
         sceneContainerStyle={{
-            // backgroundColor: 'red'
         }}
         screenOptions={ ( {route} ) => ({
         tabBarLabelStyle: { fontSize: 11},
-        // tabBarContentContainerStyle: {
-        //     // backgroundColor: 'red'
-        // },
         tabBarStyle: {
             borderTopColor: 'blue',
             borderTopWidth: 0,
@@ -43,7 +39,6 @@ export const Navigator = () => {
             borderColor: 'blue',
             borderWidth: 1 ,        
           },
-        //   tabBarShowLabel: false,
           
         tabBarIcon: ( props ) => {
             let iconName = '';
@@ -81,8 +76,8 @@ export const Navigator = () => {
             // })}
                 
         />
-        <Tab.Screen name="Comercios" component={Comercios} />
-        <Tab.Screen name="Mapa" component={MyStack} />
+        <Tab.Screen name="Comercios" component={ComercioStack} />
+        <Tab.Screen name="Mapa" component={MapaScreen} />
         <Tab.Screen name="Tarjeta" component={Tarjeta} />
     </Tab.Navigator>
     

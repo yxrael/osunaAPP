@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
 import { OfertaIndividual } from '../components/OfertaIndividual';
-import { listaOfertas } from '../data/listaOfertas';
+import { OfertasContext } from '../context/OfertasContext';
 
 export const Inicio = () => {
+
+  const listadoOfertas = useContext( OfertasContext );
 
   return (
     <View style={{
@@ -18,10 +20,10 @@ export const Inicio = () => {
     >
 
       <FlatList 
-          data={ listaOfertas }
+          data={ listadoOfertas.ofertas }
           renderItem={ ({ item }) => ( 
-            <OfertaIndividual  url={ item.imagen }/>)}
-          keyExtractor={ item => item.sector }
+            <OfertaIndividual  ofertas={ item }/>)}
+          keyExtractor={ item => item._id }
           showsVerticalScrollIndicator={ false }
       />
 
