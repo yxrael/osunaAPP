@@ -21,15 +21,13 @@ export const OfertaIndividual = ( { oferta }: any ) => {
 
   for( let i = 0; i < negocios.length; i++){
     if( negocios[i]._id === oferta.negocio ){
-      console.log( negocios[i].nombre )
       establecimiento = negocios[i].nombre;
     }
   }
 
   const muestraOferta = () => {
-    console.log('IR A OFERTA');
     navigation.navigate('DetalleOferta', {
-      oferta: oferta
+      oferta: oferta, negocio: establecimiento
     } );
 }
 
