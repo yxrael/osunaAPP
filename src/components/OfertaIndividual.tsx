@@ -1,39 +1,44 @@
-import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
-import React, { useContext } from 'react'
-import { Image, View, Dimensions, Text } from 'react-native'
+import React, { useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { View, Dimensions, Text } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NegociosContext } from '../context/NegociosContext';
-import { Negocio, Oferta } from '../interfaces/appInterfaces';
 import { FadeInImage } from './FadeInImage';
-import { Background } from './fondo';
-
 
 interface Props {
   sector?: string,
   url: string
 }
 
-let negocio = ''
-
 const windowWidth = Dimensions.get('window').width;
 
-export const OfertaIndividual = ( { ofertas }: any ) => {
-  // console.log('_______');
-  // console.log( ofertas._id);
-  // console.log( ofertas.negocio);
+export const OfertaIndividual = ( { oferta }: any ) => {
 
   const { negocios } = useContext( NegociosContext );
+  let establecimiento = '';
 
+  const navigation = useNavigation();
 
+  for( let i = 0; i < negocios.length; i++){
+    if( negocios[i]._id === oferta.negocio ){
+      console.log( negocios[i].nombre )
+      establecimiento = negocios[i].nombre;
+    }
+  }
 
-  // const negocio = negocios.filter( item => item._id === oferta.ofertas.negocio) 
-  // negocios.filter( item => {
-  //   if( item._id === oferta.ofertas.negocio ){
-  //     console.log( item.nombre );
-  //     negocio = item.nombre
-  //   }
-  // }) 
+  const muestraOferta = () => {
+    console.log('IR A OFERTA');
+    navigation.navigate('DetalleOferta', {
+      oferta: oferta
+    } );
+}
 
   return (
+    <TouchableOpacity
+      activeOpacity={ 0.8 }
+      onPress={ muestraOferta }
+    >
+
     <View style={{
                 shadowColor: "#000",
                 shadowOffset: {
@@ -76,7 +81,17 @@ export const OfertaIndividual = ( { ofertas }: any ) => {
            top: 0,
            paddingLeft: 5
            }}>
-            { ofertas.nombre} 
+            { oferta.nombre } 
+        </Text>
+        <Text style={{ 
+          position: 'absolute',
+           fontWeight: 'bold',
+           fontSize: 30,
+           bottom: 30,
+           left: 10,
+           paddingLeft: 5
+           }}>
+            { establecimiento } 
         </Text>
         <Text style={{ 
           position: 'absolute',
@@ -86,9 +101,10 @@ export const OfertaIndividual = ( { ofertas }: any ) => {
            right: 0,
            paddingRight: 5
            }}>
-            { ofertas.descripcion} 
+            { oferta.descripcion } 
         </Text>
 
     </View>
+    </TouchableOpacity>
   )
 }

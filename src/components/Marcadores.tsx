@@ -12,8 +12,6 @@ export const Marcadores = ( { marcador }: Marcador) => {
 
     const listaMarcas = marcador.map( (marca, index ) => {
 
-        console.log( marca.title )
-
         return (
             <Marker 
                 key={ index }

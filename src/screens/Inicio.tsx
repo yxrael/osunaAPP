@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { OfertaIndividual } from '../components/OfertaIndividual';
 import { OfertasContext } from '../context/OfertasContext';
@@ -9,6 +9,7 @@ export const Inicio = () => {
   const listadoOfertas = useContext( OfertasContext );
 
   return (
+        
     <View style={{
       ...stylesInicio.container, 
       flex: 1,
@@ -22,12 +23,13 @@ export const Inicio = () => {
       <FlatList 
           data={ listadoOfertas.ofertas }
           renderItem={ ({ item }) => ( 
-            <OfertaIndividual  ofertas={ item }/>)}
+            <OfertaIndividual  oferta={ item }/>)}
           keyExtractor={ item => item._id }
           showsVerticalScrollIndicator={ false }
       />
 
     </View>
+    
   )
 }
 

@@ -2,12 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { Comercios } from '../screens/Comercios';
-import { Inicio } from '../screens/Inicio';
 import { Tarjeta } from '../screens/Tarjeta';
 import { NegociosContext } from '../context/NegociosContext';
 import { MapaScreen } from '../screens/MapaScreen';
 import { ComercioStack } from './ComercioStack';
+import { OfertaStack } from './OfertaStack';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -70,7 +69,7 @@ export const Navigator = () => {
     >
         <Tab.Screen 
             name="Ofertas" 
-            component={Inicio}
+            component={OfertaStack}
             // screenOptions={ ({route}) => ({
                 
             // })}

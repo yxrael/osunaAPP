@@ -1,8 +1,8 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
-import { Negocio } from '../interfaces/appInterfaces';
 import { FadeInImage } from './FadeInImage';
 
 interface Props {
@@ -15,13 +15,15 @@ interface Props {
 
 const windowWidth = Dimensions.get('window').width;
 
-export const ComercioIndividual = ( { nombre , direccion , categoria, url, id  }: Props) => {
+export const ComercioIndividual = (  { nombre , direccion , categoria, url, id  }: Props) => {
 
-    console.log( nombre )
-
+    const navigation = useNavigation();
 
     const muestraComercio = () => {
-        console.log('Muestra comercio');
+
+        navigation.navigate('ComercioOsuna', {
+            nombre, id: id
+        } );
     }
 
   return (
@@ -41,7 +43,7 @@ export const ComercioIndividual = ( { nombre , direccion , categoria, url, id  }
                 ( url ) && 
                 <FadeInImage
                     uri={ url }
-                    style={{
+                    style={{ 
                     position: 'absolute',
                     top: 0,
                     right: 0,
