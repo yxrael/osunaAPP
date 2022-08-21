@@ -16,18 +16,20 @@ export const OfertaIndividual = ( { oferta }: any ) => {
 
   const { negocios } = useContext( NegociosContext );
   let establecimiento = '';
+  let url = '';
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   for( let i = 0; i < negocios.length; i++){
     if( negocios[i]._id === oferta.negocio ){
       establecimiento = negocios[i].nombre;
+      url = negocios[i].img!;
     }
   }
 
   const muestraOferta = () => {
     navigation.navigate('DetalleOferta', {
-      oferta: oferta, negocio: establecimiento
+      oferta: oferta, negocio: establecimiento, url: url
     } );
 }
 

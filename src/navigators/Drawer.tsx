@@ -35,7 +35,7 @@ export const MyDrawer = () => {
 
 const MenuInterno = (  ) => {
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const { status } = useContext( AuthContext );
 
     return (

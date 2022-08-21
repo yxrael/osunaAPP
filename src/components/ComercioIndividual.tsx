@@ -17,12 +17,12 @@ const windowWidth = Dimensions.get('window').width;
 
 export const ComercioIndividual = (  { nombre , direccion , categoria, url, id  }: Props) => {
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
 
     const muestraComercio = () => {
 
         navigation.navigate('ComercioOsuna', {
-            nombre, id: id
+            nombre, id: id, url: url
         } );
     }
 
