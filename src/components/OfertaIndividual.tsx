@@ -4,6 +4,8 @@ import { View, Dimensions, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NegociosContext } from '../context/NegociosContext';
 import { FadeInImage } from './FadeInImage';
+import { Negocio } from '../interfaces/appInterfaces';
+import { ComercioIndividual } from './ComercioIndividual';
 
 interface Props {
   sector?: string,
@@ -15,21 +17,20 @@ const windowWidth = Dimensions.get('window').width;
 export const OfertaIndividual = ( { oferta }: any ) => {
 
   const { negocios } = useContext( NegociosContext );
-  let establecimiento = '';
-  let url = '';
+  let negocio: any = [];
 
   const navigation = useNavigation<any>();
 
   for( let i = 0; i < negocios.length; i++){
     if( negocios[i]._id === oferta.negocio ){
-      establecimiento = negocios[i].nombre;
-      url = negocios[i].img!;
+      negocio = negocios[i];
     }
   }
 
   const muestraOferta = () => {
     navigation.navigate('DetalleOferta', {
-      oferta: oferta, negocio: establecimiento, url: url
+      // oferta: oferta, negocio: establecimiento, url: url, testNegocio
+      oferta: oferta, negocio
     } );
 }
 
@@ -64,6 +65,7 @@ export const OfertaIndividual = ( { oferta }: any ) => {
             }}
         /> */}
 
+
         <FadeInImage 
           // uri={'https://nodocios.com.ar/wp-content/uploads/oferta.jpg'}
           uri={'https://www.rotulatumismo.com/2344-thickbox_default/cartel-colgante-super-oferta.jpg'}
@@ -91,7 +93,7 @@ export const OfertaIndividual = ( { oferta }: any ) => {
            left: 10,
            paddingLeft: 5
            }}>
-            { establecimiento } 
+            { negocio.nombre } 
         </Text>
         <Text style={{ 
           position: 'absolute',

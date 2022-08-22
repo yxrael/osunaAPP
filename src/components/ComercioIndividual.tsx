@@ -10,12 +10,20 @@ interface Props {
     direccion: string,
     categoria: string,
     id: string
-    url?: string
+    url?: string,
+    height?: number
 }
 
 const windowWidth = Dimensions.get('window').width;
 
-export const ComercioIndividual = (  { nombre , direccion , categoria, url, id  }: Props) => {
+export const ComercioIndividual = (  {
+        nombre ,
+        direccion ,
+        categoria,
+        url,
+        id,
+        height = ((windowWidth * 0.9) * 0.35)
+    }: Props) => {
 
     const navigation = useNavigation<any>();
 
@@ -32,7 +40,9 @@ export const ComercioIndividual = (  { nombre , direccion , categoria, url, id  
         activeOpacity={ 0.8 }
         onPress={ muestraComercio }
     >
-        <LinearGradient colors={['#c0d1eb', '#dde4eb', '#edf1f5']} style={ styles.contenedor }>
+        <LinearGradient 
+            colors={['#c0d1eb', '#dde4eb', '#edf1f5']} 
+            style={ {...styles.contenedor, height } }>
             
             <Image 
                 source={ require('../../assets/logoasempro.png')}
