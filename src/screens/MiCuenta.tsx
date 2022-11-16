@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {Button, Text, View} from 'react-native';
 import { styles } from '../theme/styles';
 import { AuthContext } from '../context/AuthContext';
-import { Navigator } from '../navigators/Navigator';
+import { NavigatorComercios } from '../navigators/NavigatorComercios';
 
 export const MiCuenta = ( { navigation }) => {
 

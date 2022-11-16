@@ -39,7 +39,7 @@ export const RegisterScreen = ( { navigation }: any) => {
       console.log('registrando');
         Keyboard.dismiss();
         signUp({nombre: name, correo: email, password, nif});
-        navigation.navigate('e-ASEMPRO');
+        navigation.navigate('e-Comercios');
      }
 
     return (
@@ -52,7 +52,7 @@ export const RegisterScreen = ( { navigation }: any) => {
 
                 <View style={ loginStyles.formContainer }>
                     {/* Keyboard avoid view */}
-                    <WhiteLogo />
+                    {/* <WhiteLogo /> */}
 
                     <Text style={ loginStyles.title }>Nueva cuenta</Text>
 

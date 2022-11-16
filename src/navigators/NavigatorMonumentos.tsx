@@ -10,7 +10,7 @@ import { OfertaStack } from './OfertaStack';
 
 const Tab = createMaterialTopTabNavigator();
 
-export const Navigator = () => {
+export const NavigatorMonumentos = () => {
 
     const { loadNegocios } = useContext( NegociosContext );
     useEffect(() => {
@@ -43,21 +43,24 @@ export const Navigator = () => {
             let iconName = '';
             
             switch(route.name) {
-                case 'Comercios' :
-                    iconName = 'gift-outline'
+
+                case 'Museos' :
+                    iconName = 'library-outline'
                 break;
-  
-                case 'Tarjeta' :
-                    iconName = 'qr-code-outline'
+
+                case 'Edificios' :
+                    iconName = 'business-outline'
+                break;
+
+                case 'Lugares' :
+                    iconName = 'images-outline'
                 break;
 
                 case 'Mapa' :
                     iconName = 'location-outline'
                 break;
 
-                case 'Ofertas' :
-                    iconName = 'star-outline'
-                break;
+
   
             }
             return <Ionicons name={iconName} size={25} color='black' />
@@ -68,16 +71,13 @@ export const Navigator = () => {
            
     >
         <Tab.Screen 
-            name="Ofertas" 
+            name="Museos" 
             component={OfertaStack}
-            // screenOptions={ ({route}) => ({
-                
-            // })}
-                
         />
-        <Tab.Screen name="Comercios" component={ComercioStack} />
+        <Tab.Screen name="Edificios" component={ComercioStack} />
+        <Tab.Screen name="Lugares" component={ComercioStack} />
         <Tab.Screen name="Mapa" component={MapaScreen} />
-        <Tab.Screen name="Tarjeta" component={Tarjeta} />
+
     </Tab.Navigator>
     
   )

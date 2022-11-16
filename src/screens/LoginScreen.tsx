@@ -39,7 +39,7 @@ export const LoginScreen = ({ navigation }: any) => {
       const onLogin = () => {
          Keyboard.dismiss();
          signIn({ correo: email, password });
-         navigation.navigate('e-ASEMPRO')
+         navigation.navigate('e-Comercios')
       }
  
 
@@ -53,7 +53,7 @@ export const LoginScreen = ({ navigation }: any) => {
         >
             <View style={ loginStyles.formContainer }>
                     {/* Keyboard avoid view */}
-                    <WhiteLogo />
+                    {/* <WhiteLogo /> */}
 
                     <Text style={ loginStyles.title }>Login</Text>
 

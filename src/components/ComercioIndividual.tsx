@@ -44,10 +44,10 @@ export const ComercioIndividual = (  {
             colors={['#c0d1eb', '#dde4eb', '#edf1f5']} 
             style={ {...styles.contenedor, height } }>
             
-            <Image 
+            {/* <Image 
                 source={ require('../../assets/logoasempro.png')}
                 style={ styles.imagenFondo }
-            />
+            /> */}
 
             {
                 ( url ) && 
