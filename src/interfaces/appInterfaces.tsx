@@ -33,14 +33,15 @@ export interface NegociosResponse {
     negocios: Negocio[];
 }
 
-export interface Negocio {
-    precio:    number;
-    _id:       string;
-    nombre:    string;
-    categoria: Categoria;
-    usuario:   Categoria;
-    img?:      string;
-}
+// export interface Negocio {
+//     precio:    number;
+//     _id:       string;
+//     nombre:    string;
+//     seccion: string;
+//     categoria: Categoria;
+//     usuario:   Categoria;
+//     img?:      string;
+// }
 
 // export interface Categoria {
 //     _id:    string;
@@ -71,6 +72,7 @@ export interface CreadoPor {
 export interface Negocio {
     _id:         string;
     nombre:      string;
+    seccion: string;
     categoria:   Categoria;
     img?:         string;
     direccion?:   string;
