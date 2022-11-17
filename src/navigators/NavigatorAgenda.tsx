@@ -48,7 +48,7 @@ export const NavigatorAgenda = () => {
                 break;
 
                 case 'Teatro' :
-                    iconName = 'ticket-outline'
+                    iconName = 'chatbox-ellipses-outline'
                 break;
 
                 case 'Cursos' :
@@ -56,7 +56,7 @@ export const NavigatorAgenda = () => {
                 break;
 
                 case 'Otros eventos' :
-                    iconName = 'telescope-outline'
+                    iconName = 'duplicate-outline'
                 break;                
   
             }
